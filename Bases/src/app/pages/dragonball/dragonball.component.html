@@ -1,20 +1,32 @@
 <h1>Dragonball</h1>
-<hr>
+<hr />
 <section class="row">
-    <div class="col-12 col-sm-6">
-    <h3>Agregar</h3>
-    <input type="text" class="form-control" placeholder="Nombre">
-     <input type="number" class="form-control mt-2" placeholder="Poder">
+  <div class="col-12 col-sm-6">
+    <h3>Agregar {{ name() }} </h3>
 
-     <button class="mt-2 btn btn-primary">Agregar</button>
-</div>
-     <div class="col-12 sol-sm-6">
-        <h3>Listado de personajes</h3>
-        <ol>
-            <li>Goku</li>
-            <li>Goku</li>
-            <li>Goku</li>
-            <li>Goku</li>
-        </ol>
-     </div>
+    <input type="text" class="form-control" placeholder="Nombre" [value]="name()" (change)="name.set(txtName.value)" (input)="name.set(txtName.value)" #txtName/>  
+    <h3> {{power()}} </h3>
+    <input type="number" class="form-control mt-2" placeholder="Poder" [value]="power()" (input)="power.set(numberPower.valueAsNumber)" #numberPower />
+
+    <button (click)="addCharacter()" class="mt-2 btn btn-primary">Agregar</button>
+  </div>
+  <div class="col-12 sol-sm-6">
+    <h3>Listado de personajes</h3>
+
+    <ul>
+      @for (character of character(); track character.id; let idx = $index) {
+      @if (character.power>500) {
+      <li>
+        <span>{{ idx + 1 }} - {{ character.name }} </span>
+        <strong
+          [class.text-danger]="character.power > 9000"
+          [class.text-primary]="character.power < 9000"
+          >({{ character.power }})</strong
+        >
+      </li>
+      }@else {
+        <li>No tiene suficiente poder para verlo</li>
+      }}
+    </ul>
+  </div>
 </section>
