@@ -1,0 +1,14 @@
+<h1>Dragonball Super</h1>
+<hr />
+<section class="row">
+  <div class="col-12 col-sm-6">
+
+    <app-character-add (newCharacter)="CharacterAddComponent($event)"></app-character-add>
+
+    </div>
+  <div class="col-12 sol-sm-6">
+
+<dragonball-character-list listName="Listado de personajes" [character]="character()"></dragonball-character-list>
+
+  </div>
+</section>

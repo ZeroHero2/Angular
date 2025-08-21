@@ -6,7 +6,7 @@ import { DragonballComponent } from './pages/dragonball/dragonball.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CounterComponent,NavbarComponent,DragonballComponent],
+  imports: [RouterOutlet,NavbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
